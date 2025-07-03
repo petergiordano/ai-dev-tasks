@@ -54,7 +54,13 @@ The generated task list _must_ follow this structure:
   - [ ] 1.2 [Sub-task description 1.2]
 - [ ] 2.0 Parent Task Title
   - [ ] 2.1 [Sub-task description 2.1]
-- [ ] 3.0 Parent Task Title (may not require sub-tasks if purely structural or configuration)
+    - [ ] 2.1.1 [Sub-sub-task example]
+- [ ] 3.0 Security Task Parent Title
+  - [ ] 3.1 [Implement input validation for form X]
+  - [ ] 3.2 [Add authentication checks to API endpoint Y]
+  - [ ] 3.3 [Review data storage for sensitive information encryption]
+  - [ ] 3.4 [Write security-focused unit/integration tests for Z]
+- [ ] 4.0 Parent Task Title (may not require sub-tasks if purely structural or configuration)
 ```
 
 ## Interaction Model

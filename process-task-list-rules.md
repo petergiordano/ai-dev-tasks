@@ -11,25 +11,23 @@ Guidelines for managing task lists in markdown files to track progress on comple
 
 ## Task Implementation
 - **One sub-task at a time:** Do **NOT** start the next sub‑task until you ask the user for permission and they say "yes" or "y"
-- **Completion protocol:**  
+- **Completion protocol:**
   1. When you finish a **sub‑task**, immediately mark it as completed by changing `[ ]` to `[x]`.
   2. If **all** subtasks underneath a parent task are now `[x]`, follow this sequence:
-    - **First**: Run the full test suite (`pytest`, `npm test`, `bin/rails test`, etc.)
-    - **Only if all tests pass**: Stage changes (`git add .`)
-    - **Clean up**: Remove any temporary files and temporary code before committing
-    - **Commit**: Use a descriptive commit message that:
-      - Uses conventional commit format (`feat:`, `fix:`, `refactor:`, etc.)
-      - Summarizes what was accomplished in the parent task
-      - Lists key changes and additions
-      - References the task number and PRD context
-      - **Formats the message as a single-line command using `-m` flags**, e.g.:
-
-        ```
-        git commit -m "feat: add payment validation logic" -m "- Validates card type and expiry" -m "- Adds unit tests for edge cases" -m "Related to T123 in PRD"
-        ```
+     - **First**: Run the full test suite (`pytest`, `npm test`, `bin/rails test`, etc.). **Ensure this includes any security-specific tests or linting.**
+     - **Only if all tests pass**: Stage changes (`git add .`)
+     - **Clean up**: Remove any temporary files and temporary code before committing
+     - **Commit**: Use a descriptive commit message that:
+       - Uses conventional commit format (`feat:`, `fix:`, `refactor:`, `security:`, etc. for security-related commits)
+       - Summarizes what was accomplished in the parent task
+       - Lists key changes and additions
+       - References the task number and PRD context
+       - **Formats the message as a single-line command using `-m` flags**, e.g.:
+         ```
+         git commit -m "security: implement user input sanitization for comments" -m "- Added DOMPurify to sanitize user-generated content" -m "- Updated unit tests to include XSS attack vectors" -m "Related to T3.1 in PRD"
+         ```
   3. Once all the subtasks are marked completed and changes have been committed, mark the **parent task** as completed.
 - Stop after each sub‑task and wait for the user's go‑ahead.
-
 ## Task List Maintenance
 
 1. **Update the task list as you work:**
@@ -48,7 +46,8 @@ When working with task lists, the AI must:
 2. Follow the completion protocol:
    - Mark each finished **sub‑task** `[x]`.
    - Mark the **parent task** `[x]` once **all** its subtasks are `[x]`.
-3. Add newly discovered tasks.
+3. Add newly discovered tasks, including any new security vulnerabilities or requirements.
 4. Keep "Relevant Files" accurate and up to date.
 5. Before starting work, check which sub‑task is next.
 6. After implementing a sub‑task, update the file and then pause for user approval.
+7. **When generating code or instructions for security-related tasks, prioritize secure coding best practices.**
